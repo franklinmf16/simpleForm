@@ -81,3 +81,63 @@
     </div>
   </div>
 </template>
+
+<script>
+import store from '@/store'
+import axios from 'axios';
+export default {
+  name: 'PageTwo',store,
+  data() {
+    if(store.state.pageTwo.length === 0) {
+      return {
+        name: '',
+        date: '',
+        location: '',
+        city: '',
+        isVic: false,
+      }
+    } else {
+      return store.state.pageTwo[store.state.pageTwo.length - 1]
+    }
+  },
+ 
+  methods: {
+    back() {
+      store.commit('addItemPageTwo', {
+        name: this.name,
+        date: this.date,
+        location: this.location,
+        city: this.city,
+        isVic: this.isVic
+      })
+      this.$router.push('/')
+    },
+    locationPick() {
+      this.isVic = true;
+    },
+
+    locationUnPick() {
+      this.isVic = false;
+    },
+    submit() {
+      var pageOneContent = JSON.stringify(store.state.lists[store.state.lists.length - 1])
+      var pageTwoContent = JSON.stringify(store.state.pageTwo[store.state.pageTwo.length - 1])
+      axios.post('https://webhook.site/9dd8975a-2d55-4af7-80d2-1d0716814193', {
+        pageOne: pageOneContent,
+        pageTwo: {name: this.name,
+                  date: this.date,
+                  location: this.location,
+                  city: this.city,
+                  isVic: this.isVic}
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+
+  }
+}
+</script>

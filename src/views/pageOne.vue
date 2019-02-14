@@ -83,3 +83,61 @@
 </template>
 
 
+<script>
+import './../../node_modules/bulma/css/bulma.css';
+import store from '@/store'
+export default {
+  name: 'PageOne',store,
+  data() {
+    if(store.state.lists.length === 0) {
+      return {
+        name: '',
+        date: '',
+        location: '',
+        city: '',
+        isVic: false,
+      }
+    } else {
+      return store.state.lists[store.state.lists.length - 1]
+    }
+
+  },
+  methods: {
+    next() {
+      if(!this.date) {
+        alert('please fill the date')
+      } else if(this.location !== 'YES' ) {
+        alert('please fill the location')
+      } else if(!this.city) {
+        alert('please fill the city')
+      } else {
+        store.commit('addItem', {
+          name: this.name,
+          date: this.date,
+          location: this.location,
+          city: this.city,
+          isVic: this.isVic
+        })
+        this.$router.push('/pagetwo')
+      }
+    },
+
+    locationPick() {
+      this.isVic = true;
+    },
+
+    locationUnPick() {
+      this.isVic = false;
+    }
+
+  }
+}
+</script>
+
+<style>
+
+</style>
+
+
+
+
