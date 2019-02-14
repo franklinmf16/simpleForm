@@ -8,7 +8,7 @@ It is a simple form filling web app with two pages. It was developed with the Vu
 ### How to run
 ```
 npm install
-npm run srver
+npm run server
 ```
 
 
