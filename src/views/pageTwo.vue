@@ -86,7 +86,7 @@
 import store from '@/store'
 import axios from 'axios';
 export default {
-  name: 'PageTwo',store,
+  name: 'pageTwo',store,
   data() {
     if(store.state.pageTwo.length === 0) {
       return {
