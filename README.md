@@ -1,29 +1,15 @@
 # simpleform
 
-## Project setup
+### Description
+It is a simple form filling web app with two pages. It was developed with the Vue.js framework. 
+
+### Link to demo 
+
+### How to run
 ```
 npm install
+npm run srver
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
