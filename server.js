@@ -1,12 +1,9 @@
-import express from 'express';
-import serveStatic from 'serve-static';
-import { join } from 'path';
 
-const app = express();
-
-app.use('/', serveStatic(join(__dirname, '/dist')));
-
-const port = process.env.PORT || 8080;
+var express = require('express');
+var path = require('path');
+var serveStatic = require('serve-static');
+app = express();
+app.use(serveStatic(__dirname + "/dist"));
+var port = process.env.PORT || 5000;
 app.listen(port);
-
-console.log('Listening on port: ', port);
+console.log('server started '+ port);
